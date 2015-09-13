@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIAlertViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,14 +19,18 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
     @IBAction func startGame(sender: UIButton) {
         let alertView = UIAlertView()
         alertView.title = "start"
         alertView.message = "are you ready?"
         alertView.addButtonWithTitle("go!")
         alertView.show()
+        alertView.delegate = self
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        self.performSegueWithIdentifier("startGame", sender:nil)
     }
 }
 
