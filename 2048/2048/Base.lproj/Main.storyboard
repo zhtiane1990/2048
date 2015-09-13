@@ -43,7 +43,7 @@
         <!--setting-->
         <scene sceneID="Ink-yI-Ogv">
             <objects>
-                <viewController id="xZe-gp-oLO" sceneMemberID="viewController">
+                <viewController title="setting" id="xZe-gp-oLO" customClass="SettingViewController" customModule="_048" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y23-ZD-xck"/>
                         <viewControllerLayoutGuide type="bottom" id="UhL-4l-6Hc"/>
@@ -62,7 +62,7 @@
         <!--2048-->
         <scene sceneID="boL-Dc-rEo">
             <objects>
-                <viewController id="UnT-l5-hid" sceneMemberID="viewController">
+                <viewController title="2048" id="UnT-l5-hid" customClass="MainViewController" customModule="_048" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ldp-Ol-9hh"/>
                         <viewControllerLayoutGuide type="bottom" id="nnC-8K-xV3"/>
