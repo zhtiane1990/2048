@@ -27,6 +27,13 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         setupBackground()
+        
+        getNumber()
+        
+        for i in 0..<10
+        {
+            getNumber()
+        }
     }
 
     func setupBackground() {
@@ -53,4 +60,46 @@ class MainViewController: UIViewController {
             
         }
     }
+    
+    func getNumber()
+    {
+        let randv = Int(arc4random_uniform(10))
+        println(randv)
+        var seed: Int = 2
+        if (randv == 1)
+        {
+            seed = 4
+        }
+        let col = Int(arc4random_uniform(UInt32(dimension)))
+        let row = Int(arc4random_uniform(UInt32(dimension)))
+        
+        insertTile((row, col), value: seed)
+    }
+    
+    func insertTile(pos: (Int, Int), value: Int)
+    {
+        let (row, col) = pos;
+        
+        let x = 30 + CGFloat(col) * (width + padding)
+        let y = 150 + CGFloat(row) * (width + padding)
+        
+        let tile = TileView(pos: CGPointMake(x,y), width: width, value: value)
+        self.view.addSubview(tile)
+        self.view.bringSubviewToFront(tile)
+        
+        tile.layer.setAffineTransform(CGAffineTransformMakeScale(0.1, 0.1))
+        
+        UIView.animateWithDuration(0.3, delay: 0.1, options: UIViewAnimationOptions.TransitionNone, animations: {
+            () -> Void in
+            tile.layer.setAffineTransform(CGAffineTransformMakeScale(1, 1))
+            })
+            {
+                (finished:Bool) -> Void in
+                UIView.animateWithDuration(0.08, animations: { () -> Void in
+                    
+                    tile.layer.setAffineTransform(CGAffineTransformIdentity)
+                })
+        }
+    }
 }
+
