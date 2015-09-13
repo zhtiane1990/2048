@@ -36,6 +36,7 @@
 		0405AE8F1BA51E7B0084EE4E /* 2048Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 2048Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0405AE941BA51E7B0084EE4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0405AE951BA51E7B0084EE4E /* _048Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _048Tests.swift; sourceTree = "<group>"; };
+		043F8CC61BA528070034C1CF /* 2048.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = 2048.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +60,7 @@
 		0405AE711BA51E7A0084EE4E = {
 			isa = PBXGroup;
 			children = (
+				043F8CC61BA528070034C1CF /* 2048.playground */,
 				0405AE7C1BA51E7A0084EE4E /* 2048 */,
 				0405AE921BA51E7B0084EE4E /* 2048Tests */,
 				0405AE7B1BA51E7A0084EE4E /* Products */,
@@ -411,6 +413,7 @@
 				0405AE9B1BA51E7B0084EE4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0405AE9C1BA51E7B0084EE4E /* Build configuration list for PBXNativeTarget "2048Tests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +422,7 @@
 				0405AE9E1BA51E7B0084EE4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
