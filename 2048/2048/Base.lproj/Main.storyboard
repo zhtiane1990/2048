@@ -33,7 +33,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="zhn-7k-EZG" kind="show" identifier="startGame" id="QKv-uU-8Z1"/>
+                        <segue destination="zhn-7k-EZG" kind="presentation" identifier="startGame" id="QKv-uU-8Z1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -49,15 +49,16 @@
                         <viewControllerLayoutGuide type="bottom" id="UhL-4l-6Hc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="RZS-rg-QWq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.087327211186547404" green="0.96159917212043744" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="setting" id="WP4-8B-fhr"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" title="setting" id="PzW-xP-2DP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZoI-0T-FKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="952" y="214"/>
+            <point key="canvasLocation" x="1764" y="214"/>
         </scene>
         <!--2048-->
         <scene sceneID="boL-Dc-rEo">
@@ -72,11 +73,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="2048" id="5hn-n8-wjL"/>
+                    <navigationItem key="navigationItem" title="2048" id="jnQ-48-FwY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LVN-NA-fGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="952" y="-448"/>
+            <point key="canvasLocation" x="1764" y="-448"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5tc-GY-Ygh">
@@ -89,13 +90,51 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="UnT-l5-hid" kind="relationship" relationship="viewControllers" id="Zp8-Di-bX1"/>
-                        <segue destination="xZe-gp-oLO" kind="relationship" relationship="viewControllers" id="iPB-ed-bo0"/>
+                        <segue destination="lwa-AX-oeg" kind="relationship" relationship="viewControllers" id="Zp8-Di-bX1"/>
+                        <segue destination="6la-ux-cA4" kind="relationship" relationship="viewControllers" id="iPB-ed-bo0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tX5-cO-Pi3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="132" y="-117"/>
+        </scene>
+        <!--2048-->
+        <scene sceneID="OSX-Jz-dDg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lwa-AX-oeg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="2048" id="5hn-n8-wjL"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zTo-t0-Q5l">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UnT-l5-hid" kind="relationship" relationship="rootViewController" id="Af9-MH-fMl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g1Q-Rk-K4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="952" y="-448"/>
+        </scene>
+        <!--setting-->
+        <scene sceneID="rUd-8n-9oD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6la-ux-cA4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="setting" id="WP4-8B-fhr"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dJb-Pe-HDu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xZe-gp-oLO" kind="relationship" relationship="rootViewController" id="qzL-5C-JRQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bKs-gl-5OT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="952" y="214"/>
         </scene>
     </scenes>
 </document>
