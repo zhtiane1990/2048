@@ -23,11 +23,21 @@ class MainViewController: UIViewController {
     
     var backgrounds:Array<UIView> = []
     
+    var gmodel: GameModel
+    
+    var tiles:Dictionary<NSIndexPath, TileView>
+    
+    
+    required init(coder aDecoder: NSCoder) {
+        self.gmodel = GameModel(dimension: self.dimension)
+        self.tiles = Dictionary()
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupBackground()
-        
+        setButton()
         getNumber()
         
         for i in 0..<10
@@ -36,6 +46,39 @@ class MainViewController: UIViewController {
         }
     }
 
+    func setButton()
+    {
+        var cv = ControlView()
+        var btnreset = cv.createButton("reset", action: Selector("resetTapped"), sender: self)
+        btnreset.frame.origin.x = 50
+        btnreset.frame.origin.y = 450
+        self.view.addSubview(btnreset)
+        
+        var btngen = cv.createButton("new number", action:Selector("genTapped"), sender: self)
+        
+        btngen.frame.origin.x = 170
+        btngen.frame.origin.y = 450
+        self.view.addSubview(btngen)
+        
+        
+    }
+    
+    func resetTapped()
+    {
+        println("reset")
+        for(key, tile) in tiles
+        {
+            tile.removeFromSuperview()
+        }
+        gmodel.initTiles()
+    }
+    
+    func genTapped()
+    {
+        println("genTapped")
+        getNumber()
+    }
+    
     func setupBackground() {
         var x: CGFloat = 30
         var y: CGFloat = 150
@@ -73,6 +116,16 @@ class MainViewController: UIViewController {
         let col = Int(arc4random_uniform(UInt32(dimension)))
         let row = Int(arc4random_uniform(UInt32(dimension)))
         
+        if(gmodel.isFull())
+        {
+            println("postion full")
+            return
+        }
+        if(gmodel.setPosition(row, col: col, value: seed) == false)
+        {
+            getNumber()
+            return
+        }
         insertTile((row, col), value: seed)
     }
     
@@ -86,6 +139,9 @@ class MainViewController: UIViewController {
         let tile = TileView(pos: CGPointMake(x,y), width: width, value: value)
         self.view.addSubview(tile)
         self.view.bringSubviewToFront(tile)
+        
+        var index = NSIndexPath(forRow: row, inSection: col)
+        tiles[index] = tile
         
         tile.layer.setAffineTransform(CGAffineTransformMakeScale(0.1, 0.1))
         
