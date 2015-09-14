@@ -27,10 +27,13 @@ class MainViewController: UIViewController {
     
     var tiles:Dictionary<NSIndexPath, TileView>
     
+    var tileVals: Dictionary<NSIndexPath, Int>
+    
     
     required init(coder aDecoder: NSCoder) {
         self.gmodel = GameModel(dimension: self.dimension)
         self.tiles = Dictionary()
+        self.tileVals = Dictionary()
         super.init(coder: aDecoder)
     }
     
@@ -38,6 +41,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         setupBackground()
         setButton()
+        setupSwipeGuestures()
         getNumber()
         
         for i in 0..<10
@@ -63,6 +67,94 @@ class MainViewController: UIViewController {
         
     }
     
+    func setupSwipeGuestures()
+    {
+        //up
+        let upSwipe = UISwipeGestureRecognizer(target: self, action: Selector("swipeUp"))
+        upSwipe.numberOfTouchesRequired = 1
+        upSwipe.direction = UISwipeGestureRecognizerDirection.Up
+        self.view.addGestureRecognizer(upSwipe)
+        
+        //down
+        let downSwipe = UISwipeGestureRecognizer(target: self, action: Selector("swipeDown"))
+        downSwipe.numberOfTouchesRequired = 1
+        downSwipe.direction = UISwipeGestureRecognizerDirection.Down
+        self.view.addGestureRecognizer(downSwipe)
+        
+        //left
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("swipeLeft"))
+        leftSwipe.numberOfTouchesRequired = 1
+        leftSwipe.direction = UISwipeGestureRecognizerDirection.Left
+        self.view.addGestureRecognizer(leftSwipe)
+        
+        //right
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("swipeRight"))
+        rightSwipe.numberOfTouchesRequired = 1
+        rightSwipe.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(rightSwipe)
+        
+    }
+    
+    func swipeUp()
+    {
+        println("swipeUp")
+        for i in 0..<dimension
+        {
+            for j in 0..<dimension
+            {
+                var row: Int = i
+                var col: Int = j
+                var key = NSIndexPath(forRow: row, inSection: col)
+                
+                if(tileVals.indexForKey(key) != nil)
+                {
+                    if(row > 3)
+                    {
+                        removeKeyTile(key)
+                        
+                        var index = row * dimension + col - dimension
+                        row = Int(index/dimension)
+                        col = index - row * dimension
+                        
+                        //insertTile(pos:(row, col), value: tileVals.indexForKey(key))
+                        
+                        insertTile((row, col), value: tileVals[key]!)
+                    
+                    }
+                }
+                
+            }
+            
+
+        }
+        
+    }
+    
+    func swipeDown()
+    {
+        println("swipeDown")
+    }
+    
+    func swipeLeft()
+    {
+        println("swipeLeft")
+    }
+    
+    func swipeRight()
+    {
+        println("swipeRight")
+    }
+    
+    func removeKeyTile(key: NSIndexPath)
+    {
+        var tile = tiles[key]
+        var tileval = tileVals[key]
+        
+        tile?.removeFromSuperview()
+        tiles.removeValueForKey(key)
+        tileVals.removeValueForKey(key)
+    }
+    
     func resetTapped()
     {
         println("reset")
@@ -70,6 +162,8 @@ class MainViewController: UIViewController {
         {
             tile.removeFromSuperview()
         }
+        tiles.removeAll(keepCapacity: true)
+        tileVals.removeAll(keepCapacity: true)
         gmodel.initTiles()
     }
     
@@ -142,6 +236,7 @@ class MainViewController: UIViewController {
         
         var index = NSIndexPath(forRow: row, inSection: col)
         tiles[index] = tile
+        tileVals[index] = value
         
         tile.layer.setAffineTransform(CGAffineTransformMakeScale(0.1, 0.1))
         
