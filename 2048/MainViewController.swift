@@ -118,47 +118,18 @@ class MainViewController: UIViewController {
         println("swipeUp")
         
         gmodel.reflowUp()
+        gmodel.mergeUP()
+        gmodel.reflowUp()
         resetUI()
         
         initUI()
-        
-        /*for i in 0..<dimension
-        {
-            for j in 0..<dimension
-            {
-                var row: Int = i
-                var col: Int = j
-                var key = NSIndexPath(forRow: row, inSection: col)
-                
-                if(tileVals.indexForKey(key) != nil)
-                {
-                    if(row > 1)
-                    {
-                        
-                        var value = tileVals[key]
-                        removeKeyTile(key)
-                        
-                        var index = row * dimension + col - dimension
-                        row = Int(index/dimension)
-                        col = index - row * dimension
-                        
-                        //insertTile(pos:(row, col), value: tileVals.indexForKey(key))
-                        
-                        insertTile((row, col), value: value!)
-                    
-                    }
-                }
-                
-            }
-            
-
-        }*/
-        
     }
     
     func swipeDown()
     {
         println("swipeDown")
+        gmodel.reflowDown()
+        gmodel.mergeDown()
         gmodel.reflowDown()
         resetUI()
         
@@ -169,6 +140,8 @@ class MainViewController: UIViewController {
     {
         println("swipeLeft")
         gmodel.reflowLeft()
+        gmodel.mergeLeft()
+        gmodel.reflowLeft()
         resetUI()
         
         initUI()
@@ -178,6 +151,9 @@ class MainViewController: UIViewController {
     {
         println("swipeRight")
         gmodel.reflowRight()
+        gmodel.mergeRight()
+        gmodel.reflowRight()
+        
         resetUI()
         
         initUI()

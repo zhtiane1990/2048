@@ -227,6 +227,91 @@ class GameModel
         copyFromMtiles()
         
     }
+    
+    func mergeUP()
+    {
+        copyToMtiles()
+        
+        var index: Int
+        for var i = dimension-1; i>0; i--
+        {
+            for j in 0..<dimension
+            {
+                index = self.dimension*i + j
+                if((mtiles[index] > 0) && (mtiles[index - self.dimension] == mtiles[index]))
+                {
+                    mtiles[index-self.dimension] = mtiles[index]*2
+                    mtiles[index] = 0
+                }
+            }
+        }
+        
+        copyFromMtiles()
+    }
+    
+    func mergeDown()
+    {
+        copyToMtiles()
+        
+        var index: Int
+        for i in 0..<dimension-1
+        {
+            for j in 0..<dimension
+            {
+                index = self.dimension*i + j
+                if((mtiles[index] > 0) && (mtiles[index + self.dimension] == mtiles[index]))
+                {
+                    mtiles[index+self.dimension] = mtiles[index]*2
+                    mtiles[index] = 0
+                }
+            }
+        }
+        
+        copyFromMtiles()
+    }
+    
+    func mergeLeft()
+    {
+        copyToMtiles()
+        
+        var index: Int
+        for i in 0..<dimension
+        {
+            for var j = dimension-1; j>0; j--
+            {
+                index = self.dimension*i + j
+                if((mtiles[index] > 0) && (mtiles[index - 1] == mtiles[index]))
+                {
+                    mtiles[index-1] = mtiles[index]*2
+                    mtiles[index] = 0
+                }
+            }
+        }
+        
+        copyFromMtiles()
+    }
+    
+    func mergeRight()
+    {
+        copyToMtiles()
+        
+        var index: Int
+        for i in 0..<dimension
+        {
+            for j in 0..<dimension-1
+            {
+                index = self.dimension*i + j
+                if((mtiles[index] > 0) && (mtiles[index + 1] == mtiles[index]))
+                {
+                    mtiles[index+1] = mtiles[index]*2
+                    mtiles[index] = 0
+                }
+            }
+        }
+        
+        copyFromMtiles()
+    }
+
 
     
 }
