@@ -22,12 +22,27 @@ class GameModel
     var score:Int! = 0
     var bestscore:Int! = 0
     
-    init(dimension: Int, score:ScoreViewProtocol, bestscore:ScoreViewProtocol){
+    var maxnumber:Int = 0
+    
+    init(dimension: Int, maxnumber:Int, score:ScoreViewProtocol, bestscore:ScoreViewProtocol){
         self.dimension = dimension
+        self.maxnumber = maxnumber
         self.scoreDelegate = score
         self.bestscoreDelegate = bestscore
         initTiles()
         
+    }
+    
+    func isSuccess()->Bool
+    {
+        for i in 0..<(dimension*dimension)
+        {
+            if(tiles[i] >= maxnumber)
+            {
+                return true
+            }
+        }
+        return false
     }
     
     func initTiles()

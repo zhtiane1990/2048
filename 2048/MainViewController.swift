@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
     var dimension: Int = 4
     
     //
-    var maxnumber: Int = 2048
+    var maxnumber: Int = 16
     
     var width: CGFloat = 50
     
@@ -55,7 +55,7 @@ class MainViewController: UIViewController {
         setupSwipeGuestures()
         setupScoreLabels()
         
-        self.gmodel = GameModel(dimension: self.dimension,score:score, bestscore:bestscore)
+        self.gmodel = GameModel(dimension: self.dimension, maxnumber:self.maxnumber,score:score, bestscore:bestscore)
         
         getNumber()
         
@@ -154,8 +154,10 @@ class MainViewController: UIViewController {
 //        resetUI()
         
         initUI()
-        
-        getNumber()
+        if(!gmodel.isSuccess())
+        {
+            getNumber()
+        }
     }
     
     func swipeDown()
@@ -168,7 +170,10 @@ class MainViewController: UIViewController {
         
         initUI()
         
-        getNumber()
+        if(!gmodel.isSuccess())
+        {
+            getNumber()
+        }
     }
     
     func swipeLeft()
@@ -181,7 +186,10 @@ class MainViewController: UIViewController {
         
         initUI()
         
-        getNumber()
+        if(!gmodel.isSuccess())
+        {
+            getNumber()
+        }
     }
     
     func swipeRight()
@@ -195,7 +203,10 @@ class MainViewController: UIViewController {
         
         initUI()
         
-        getNumber()
+        if(!gmodel.isSuccess())
+        {
+            getNumber()
+        }
     }
     
     func removeKeyTile(key: NSIndexPath)
@@ -221,13 +232,24 @@ class MainViewController: UIViewController {
         var key:NSIndexPath
         var tile:TileView
         var tileval:Int
+        var success = false
         
+        if(gmodel.isSuccess())
+        {
+            var alerView = UIAlertView()
+            alerView.title = "恭喜你通关"
+            alerView.message = "你真棒，通关了"
+            alerView.addButtonWithTitle("OK")
+            alerView.show()
+        }
         for i in 0..<dimension
         {
             for j in 0..<dimension
             {
                 index = i * self.dimension + j
                 key = NSIndexPath(forRow: i, inSection: j)
+                
+
                 
                 //原来界面没有值，模型数据中有值
                 if((gmodel.tiles[index]>0)&&(tileVals.indexForKey(key) == nil))
@@ -269,8 +291,24 @@ class MainViewController: UIViewController {
 //                {
 //                    insertTile((i,j), value: gmodel.mtiles[index])
 //                }
+                
+                //游戏通关
+//                if(gmodel.tiles[index] >= maxnumber)
+//                {
+//                    success = true
+//                    break
+//                }
             }
         }
+        
+//        if(success == true)
+//        {
+//            var alerView = UIAlertView()
+//            alerView.title = "恭喜你通关"
+//            alerView.message = "你真棒，通关了"
+//            alerView.addButtonWithTitle("OK")
+//            alerView.show()
+//        }
     }
     
     func resetUI()
@@ -330,6 +368,11 @@ class MainViewController: UIViewController {
         if(gmodel.isFull())
         {
             println("postion full")
+            var alerView = UIAlertView()
+            alerView.title = "game over"
+            alerView.message = "game over"
+            alerView.addButtonWithTitle("OK")
+            alerView.show()
             return
         }
         if(gmodel.setPosition(row, col: col, value: seed) == false)
