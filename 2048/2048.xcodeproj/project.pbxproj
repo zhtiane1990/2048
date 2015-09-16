@@ -18,6 +18,7 @@
 		044FEC5A1BA53B7700D00D39 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FEC591BA53B7700D00D39 /* MainViewController.swift */; };
 		044FEC5C1BA53B9000D00D39 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FEC5B1BA53B9000D00D39 /* SettingViewController.swift */; };
 		044FEC5F1BA57DEF00D00D39 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FEC5E1BA57DEF00D00D39 /* TileView.swift */; };
+		047D675A1BA927650044F4AE /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D67591BA927650044F4AE /* ScoreView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		044FEC591BA53B7700D00D39 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		044FEC5B1BA53B9000D00D39 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		044FEC5E1BA57DEF00D00D39 /* TileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
+		047D67591BA927650044F4AE /* ScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			children = (
 				044FEC5E1BA57DEF00D00D39 /* TileView.swift */,
 				041DF83F1BA68B94003A6A48 /* ControlView.swift */,
+				047D67591BA927650044F4AE /* ScoreView.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				044FEC5A1BA53B7700D00D39 /* MainViewController.swift in Sources */,
+				047D675A1BA927650044F4AE /* ScoreView.swift in Sources */,
 				0405AE821BA51E7A0084EE4E /* ViewController.swift in Sources */,
 				0405AE801BA51E7A0084EE4E /* AppDelegate.swift in Sources */,
 				044FEC5F1BA57DEF00D00D39 /* TileView.swift in Sources */,
