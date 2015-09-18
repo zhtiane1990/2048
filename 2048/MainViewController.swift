@@ -9,6 +9,10 @@
 
 import UIKit
 
+import AVFoundation
+
+import AudioToolbox
+
 enum Animation2048Type
 {
     case None   //无动画
@@ -22,7 +26,7 @@ class MainViewController: UIViewController {
     var dimension: Int = 4
     
     //
-    var maxnumber: Int = 16
+    var maxnumber: Int = 2048
     
     var width: CGFloat = 50
     
@@ -40,6 +44,8 @@ class MainViewController: UIViewController {
     var score:ScoreView! //加一个！号和不加有很大区别，区别在要不要初始化
     
     var bestscore:BestScoreView!//加一个！号和不加有很大区别，区别在要不要初始化
+    
+    var player: AVAudioPlayer!
     
     required init(coder aDecoder: NSCoder) {
 
@@ -339,7 +345,11 @@ class MainViewController: UIViewController {
             {
                 var background = UIView(frame: CGRectMake(x, y, width, width))
                 
-                background.backgroundColor = UIColor.darkGrayColor()
+                background.backgroundColor = UIColor.grayColor()
+                
+                //正方形圆弧
+                background.layer.masksToBounds = true
+                background.layer.cornerRadius = 5
                 
                 self.view.addSubview(background)
                 
@@ -356,9 +366,11 @@ class MainViewController: UIViewController {
     func getNumber()
     {
         let randv = Int(arc4random_uniform(10))
+
+        
         println(randv)
         var seed: Int = 2
-        if (randv == 1)
+        if (randv%2 == 0)
         {
             seed = 4
         }
@@ -367,12 +379,15 @@ class MainViewController: UIViewController {
         
         if(gmodel.isFull())
         {
-            println("postion full")
-            var alerView = UIAlertView()
-            alerView.title = "game over"
-            alerView.message = "game over"
-            alerView.addButtonWithTitle("OK")
-            alerView.show()
+            if(gmodel.enableMerge()==false)
+            {
+                println("postion full")
+                var alerView = UIAlertView()
+                alerView.title = "game over"
+                alerView.message = "game over"
+                alerView.addButtonWithTitle("OK")
+                alerView.show()
+            }
             return
         }
         if(gmodel.setPosition(row, col: col, value: seed) == false)
@@ -380,7 +395,21 @@ class MainViewController: UIViewController {
             getNumber()
             return
         }
+        
+        //播放声音
+        let mp3Path  = NSBundle.mainBundle().pathForResource("TortoiseSVN_error", ofType: "wav")
+        //let mp3Path  = NSBundle.mainBundle().pathForResource("Soft Waves Synth", ofType: "caf")
+        
+        println("mp3Path:\(mp3Path)")
+        let url = NSURL(fileURLWithPath: mp3Path!)
+        
+        player = AVAudioPlayer(contentsOfURL: url, error: nil)
+        player.volume = 1
+        player.prepareToPlay()
+        player.play()
+        
         insertTile((row, col), value: seed, aType: Animation2048Type.New)
+        
     }
     
     func insertTile(pos: (Int, Int), value: Int, aType: Animation2048Type)
@@ -391,6 +420,10 @@ class MainViewController: UIViewController {
         let y = 150 + CGFloat(row) * (width + padding)
         
         let tile = TileView(pos: CGPointMake(x,y), width: width, value: value)
+        //正方形圆弧
+        tile.layer.masksToBounds = true
+        tile.layer.cornerRadius = 5
+        
         self.view.addSubview(tile)
         self.view.bringSubviewToFront(tile)
         

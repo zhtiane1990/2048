@@ -26,13 +26,41 @@ class ControlView
         return button
     }
     
-    func createTextField()
+    func createTextField(value:String, action:Selector, sender:UITextFieldDelegate)->UITextField
     {
+        var textField = UITextField(frame: defaultFrame)
+        textField.backgroundColor = UIColor.clearColor()
+        textField.textColor = UIColor.blackColor()
+        textField.text = value
+        textField.borderStyle = UITextBorderStyle.RoundedRect
         
+        textField.adjustsFontSizeToFitWidth = true
+        textField.delegate = sender
+        
+        return textField
     }
     
-    func createLabel()
+    func createSegment(items: [String], action:Selector, sender:UIViewController)->UISegmentedControl
     {
+        var segment = UISegmentedControl(items: items)
+        segment.frame = defaultFrame
+        //
+        segment.momentary = false
+        segment.addTarget(sender, action: action, forControlEvents: UIControlEvents.ValueChanged)
+        
+        return segment
+    }
+
+    func createLabel(title: String)->UILabel
+    {
+        let label = UILabel()
+        label.textColor = UIColor.blackColor()
+        label.backgroundColor = UIColor.whiteColor()
+        label.text = title
+        label.frame = defaultFrame
+        label.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
+        
+        return label
         
     }
 }

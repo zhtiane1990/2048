@@ -97,6 +97,59 @@ class GameModel
         return false
     }
     
+    func enableMerge()-> Bool
+    {
+       var index:Int
+       for i in 0..<dimension+1
+       {
+            for j in 0..<dimension+1
+            {
+                index = self.dimension * i + j
+                //up
+                if(index >= dimension)
+                {
+                   if(tiles[index-dimension] == tiles[index])
+                    {
+                        println("enableMerge up")
+                        return true
+                    }
+                }
+                
+                //down
+                if(index < dimension*dimension)
+                {
+                    if(tiles[index+dimension] == tiles[index])
+                    {
+                        println("enableMerge down")
+                        return true
+                    }
+                }
+                
+                //left
+                if(index >= 1)
+                {
+                    if(tiles[index-1] == tiles[index])
+                    {
+                        println("enableMerge left")
+                        return true
+                    }
+                }
+                
+                //right
+                if(index < dimension*dimension)
+                {
+                    if(tiles[index+1] == tiles[index])
+                    {
+                        println("enableMerge right")
+                        return true
+                    }
+                }
+                
+            }
+       }
+       return false
+    }
+    
     func copyToMtiles()
     {
         for i in 0..<self.dimension * self.dimension

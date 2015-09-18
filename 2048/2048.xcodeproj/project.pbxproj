@@ -19,6 +19,8 @@
 		044FEC5C1BA53B9000D00D39 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FEC5B1BA53B9000D00D39 /* SettingViewController.swift */; };
 		044FEC5F1BA57DEF00D00D39 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FEC5E1BA57DEF00D00D39 /* TileView.swift */; };
 		047D675A1BA927650044F4AE /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D67591BA927650044F4AE /* ScoreView.swift */; };
+		048782501BABD93B00B70ABF /* TortoiseSVN_error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0487824F1BABD93B00B70ABF /* TortoiseSVN_error.wav */; };
+		048782521BABD94900B70ABF /* Soft Waves Synth.caf in Resources */ = {isa = PBXBuildFile; fileRef = 048782511BABD94900B70ABF /* Soft Waves Synth.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		044FEC5B1BA53B9000D00D39 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		044FEC5E1BA57DEF00D00D39 /* TileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
 		047D67591BA927650044F4AE /* ScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
+		0487824F1BABD93B00B70ABF /* TortoiseSVN_error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TortoiseSVN_error.wav; sourceTree = "<group>"; };
+		048782511BABD94900B70ABF /* Soft Waves Synth.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Soft Waves Synth.caf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,8 @@
 		0405AE7D1BA51E7A0084EE4E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				048782511BABD94900B70ABF /* Soft Waves Synth.caf */,
+				0487824F1BABD93B00B70ABF /* TortoiseSVN_error.wav */,
 				0405AE7E1BA51E7A0084EE4E /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -236,8 +242,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048782521BABD94900B70ABF /* Soft Waves Synth.caf in Resources */,
 				0405AE851BA51E7A0084EE4E /* Main.storyboard in Resources */,
 				0405AE8A1BA51E7A0084EE4E /* LaunchScreen.xib in Resources */,
+				048782501BABD93B00B70ABF /* TortoiseSVN_error.wav in Resources */,
 				0405AE871BA51E7A0084EE4E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
