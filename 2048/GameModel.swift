@@ -100,9 +100,9 @@ class GameModel
     func enableMerge()-> Bool
     {
        var index:Int
-       for i in 0..<dimension+1
+       for i in 0..<dimension
        {
-            for j in 0..<dimension+1
+            for j in 0..<dimension
             {
                 index = self.dimension * i + j
                 //up
@@ -116,7 +116,7 @@ class GameModel
                 }
                 
                 //down
-                if(index < dimension*dimension)
+                if((index+dimension) < dimension*dimension)
                 {
                     if(tiles[index+dimension] == tiles[index])
                     {
@@ -126,7 +126,7 @@ class GameModel
                 }
                 
                 //left
-                if(index >= 1)
+                if((index-1) >= (dimension * i))
                 {
                     if(tiles[index-1] == tiles[index])
                     {
@@ -136,7 +136,7 @@ class GameModel
                 }
                 
                 //right
-                if(index < dimension*dimension)
+                if((index+1) < dimension*(i+1))
                 {
                     if(tiles[index+1] == tiles[index])
                     {
